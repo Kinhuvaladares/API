@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Secundária</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-secondary">
+        <div class="tabs-secondary">
+            <div class="tab-secondary" data-tab="host-plaza">HostMng / PlazaMng</div>
+            <div class="tab-secondary" data-tab="backoffice">Backoffice</div>
+            <div class="tab-secondary" data-tab="lanecomms">Lanecomms</div>
+            <div class="tab-secondary" data-tab="via">Via</div>
+        </div>
+        <div class="tab-content-secondary" id="host-plaza">
+            <h2>HostMng / PlazaMng</h2>
+            <input type="file" id="host-plaza-file" multiple>
+            <textarea id="host-plaza-text" class="textarea-secondary" placeholder="Informações sobre a versão"></textarea>
+            <button class="button-secondary" onclick="saveContent('host-plaza')">Salvar</button>
+        </div>
+        <div class="tab-content-secondary" id="backoffice">
+            <h2>Backoffice</h2>
+            <input type="file" id="backoffice-file" multiple>
+            <textarea id="backoffice-text" class="textarea-secondary" placeholder="Informações sobre a versão"></textarea>
+            <button class="button-secondary" onclick="saveContent('backoffice')">Salvar</button>
+        </div>
+        <div class="tab-content-secondary" id="lanecomms">
+            <h2>Lanecomms</h2>
+            <input type="file" id="lanecomms-file" multiple>
+            <textarea id="lanecomms-text" class="textarea-secondary" placeholder="Informações sobre a versão"></textarea>
+            <button class="button-secondary" onclick="saveContent('lanecomms')">Salvar</button>
+        </div>
+        <div class="tab-content-secondary" id="via">
+            <h2>Via</h2>
+            <input type="file" id="via-file" multiple>
+            <textarea id="via-text" class="textarea-secondary" placeholder="Informações sobre a versão"></textarea>
+            <button class="button-secondary" onclick="saveContent('via')">Salvar</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>

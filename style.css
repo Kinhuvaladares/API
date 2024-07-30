@@ -1,0 +1,646 @@
+:root {
+    --font-size: 14px;
+    --modal-width: 90%;
+    --modal-height: 80%;
+    --checkbox-size: 10px;
+    --button-bg-dark: #000;
+    --button-bg-light: #2196f3;
+    --button-color-dark: #fff;
+    --button-color-light: #fff;
+    --background-dark: #222;
+    --background-light: #d0e8f2;
+    --text-dark: #333; /* Updated */
+    --text-light: #fff;
+    --header-bg-dark: #555;
+    --header-bg-light: #2196f3;
+    --header-text-light: #fff;
+    --header-text-dark: #333;
+    --tab-bg-dark: #000;
+    --tab-bg-light: #2196f3;
+    --tab-text-light: #fff;
+    --tab-text-dark: #fff;
+    --client-header-bg-dark: #333;
+    --client-header-bg-light: #e0f7fa;
+    --client-header-border-dark: #666;
+    --client-header-border-light: #ccc;
+    --even-row-bg-dark: #333;
+    --even-row-bg-light: #e0f7fa;
+    --border-color-dark: #666;
+    --border-color-light: #ccc;
+    --hover-border-dark: #ffd700;
+    --hover-border-light: #1e88e5;
+}
+
+body {
+    font-size: var(--font-size);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background-dark);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid var(--border-color-dark);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: var(--text-dark);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color-dark);
+    background-color: var(--background-dark); /* Ensure all cells have the background color */
+}
+
+th {
+    background-color: var(--header-bg-dark);
+    color: var(--header-text-light);
+    transition: background-color 0.3s;
+}
+
+tr:nth-child(even) {
+    background-color: var(--even-row-bg-dark);
+}
+
+.update-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--background-dark);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 999;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.update-form.active {
+    display: block;
+}
+
+.update-form input, .update-form button {
+    padding: 10px;
+    margin-right: 10px;
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 5px;
+    font-size: var(--font-size);
+}
+
+.update-form button {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: none;
+    cursor: pointer;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    max-width: 200px;
+}
+
+.tab {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--tab-bg-dark);
+    color: var(--tab-text-dark);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: var(--font-size);
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+    text-align: center;
+}
+
+.tab.selected {
+    background-color: #9c9c9c;
+    color: #333;
+}
+
+.tab-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid var(--border-color-dark);
+    margin-top: 10px;
+    background-color: var(--background-dark);
+    border-radius: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.empty-state {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-dark);
+}
+
+.client-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--client-header-bg-dark);
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--client-header-border-dark);
+    border-radius: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.client-header h2 {
+    margin: 0;
+    flex-grow: 1;
+    cursor: pointer;
+    color: var(--text-light); /* Ensure the correct color is applied */
+}
+
+.client-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.client-actions button {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.client-content {
+    margin-top: 10px;
+}
+
+.client-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.client-content th,
+.client-content td {
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color-dark);
+    text-align: left;
+    color: var(--text-light);
+    background-color: var(--background-dark);
+}
+
+.client-content th:first-child,
+.client-content td:first-child {
+    color: var(--text-light);
+}
+
+.client-content th:nth-child(2),
+.client-content td:nth-child(2) {
+    color: var(--text-light);
+}
+
+.client-content th:nth-child(3),
+.client-content td:nth-child(3) {
+    color: var (--text-light);
+}
+
+.client-content th:nth-child(4),
+.client-content td:nth-child(4) {
+    color: var(--text-light);
+}
+
+.client-content td.actions {
+    white-space: nowrap;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-dark);
+    font-size: 12px;
+}
+
+.main-content {
+    flex-grow: 1;
+    margin-right: 20px;
+    position: relative;
+}
+
+.sidebar {
+    max-width: 200px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.initial-screen-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.botao,
+.aba {
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.botao:hover,
+.aba:hover,
+.save-button:hover,
+.client-actions button:hover,
+.initial-screen-button:hover,
+.xml-buttons-top button:hover {
+    border-color: var(--hover-border-dark);
+}
+
+@keyframes pulse-border-gradient {
+    0% {
+        border-color: transparent;
+    }
+    25% {
+        border-color: var(--hover-border-dark);
+    }
+    50% {
+        border-color: var(--hover-border-dark);
+    }
+    75% {
+        border-color: var(--hover-border-dark);
+    }
+    100% {
+        border-color: var(--hover-border-dark);
+    }
+}
+
+.tab {
+    padding: 5px 10px;
+    margin: 3px;
+    background-color: var(--tab-bg-dark);
+    color: var(--tab-text-dark);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: var(--font-size);
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.tab:hover {
+    border-color: var(--hover-border-dark);
+}
+
+.tab.selected {
+    background-color: #fff;
+    color: #333;
+}
+
+.edit-button,
+.replicate-button {
+    background-color: var(--button-bg-dark);
+    color: var (--button-color-dark);
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: var(--font-size);
+}
+
+.edit-button.disabled,
+.replicate-button.disabled {
+    display: none;
+}
+
+#client-name {
+    border-radius: 5px;
+    padding: 3px;
+    border: 0px solid #ccc;
+    font-size: var(--font-size);
+}
+
+.tab-text-input {
+    width: 98%;
+    height: 250px;
+    resize: vertical;
+    margin-top: 30px;
+    padding: 10px;
+    font-size: var(--font-size);
+    border-radius: 10px;
+    background-color: var(--background-dark);
+    color: var (--text-light);
+    border: 1px solid var(--border-color-dark);
+}
+
+.add-client-button {
+    background-color: var(--button-bg-dark);
+    color: var (--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    padding: 3px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: var(--font-size);
+}
+
+.add-client-button:hover {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+}
+
+.save-button {
+    padding: 3px 10px;
+    margin: 10px 0;
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: var(--font-size);
+}
+
+.save-button:hover {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border-color: var(--hover-border-dark);
+}
+
+.xml-buttons-top button {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    padding: 3px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: var(--font-size);
+}
+
+.xml-buttons-top button:hover {
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border-color: var(--hover-border-dark);
+}
+
+.xml-buttons-top {
+    display: flex;
+    gap: 10px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mode-toggle {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.mode-toggle input {
+    display: none;
+}
+
+.mode-toggle label {
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 24px;
+    position: relative;
+    cursor: pointer;
+}
+
+.mode-toggle label::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.mode-toggle input:checked + label {
+    background-color: var(--button-bg-light);
+}
+
+.mode-toggle input:checked + label::before {
+    transform: translateX(26px);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--background-dark);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 10px;
+    max-width: var(--modal-width);
+    max-height: var(--modal-height);
+    overflow-y: auto;
+    font-size: var(--font-size);
+    transition: background-color 0.3s;
+    width: 60%;
+    height: 60%;
+    border: 1px solid var(--border-color-dark);
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.close-modal {
+    background-color: var(--button-bg-dark);
+    color: var (--button-color-dark);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+}
+
+.application-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.application-checkboxes .checkbox {
+    background-color: #d3d3d3;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: var(--font-size);
+}
+
+.client-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.client-checkboxes .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--font-size);
+}
+
+.edit-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+input[type="checkbox"] {
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+}
+
+/* Additional Styles for the Secondary Page */
+.container-secondary {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background-dark);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 1px solid var(--border-color-dark);
+}
+
+.tabs-secondary {
+    display: flex;
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.tab-secondary {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: var(--tab-bg-dark);
+    color: var(--tab-text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tab-secondary:hover, .tab-secondary.active {
+    background-color: #9c9c9c;
+    color: #333;
+}
+
+.tab-content-secondary {
+    display: none;
+    padding: 20px;
+    background-color: var(--background-dark);
+    border-radius: 10px;
+    border: 1px solid var(--border-color-dark);
+    margin-top: 20px;
+}
+
+.tab-content-secondary.active {
+    display: block;
+}
+
+.textarea-secondary {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color-dark);
+    background-color: var(--background-dark);
+    color: var(--text-light);
+}
+
+.button-secondary {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--button-bg-dark);
+    color: var(--button-color-dark);
+    border: 1px solid var(--border-color-dark);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button-secondary:hover {
+    background-color: var(--hover-border-dark);
+    color: var(--button-color-light);
+}

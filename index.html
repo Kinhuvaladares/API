@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="main-content">
+        <h1>Versão de Aplicações Tecsidel</h1>
+        <div id="edit-options-container" class="edit-options" style="display: none;">
+            <input type="checkbox" id="toggle-buttons" onclick="toggleButtons()"> Habilitar Edição
+        </div>
+        <div id="tab-contents"></div>
+        <div class="empty-state" id="empty-state">
+            <input type="text" id="client-name" placeholder="Nome do Cliente">
+            <button class="botao add-client-button" onclick="addClient()">Adicionar Novo Cliente</button>
+        </div>
+        <button class="initial-screen-button botao" onclick="showInitialScreen()">Tela Inicial</button>
+        <div class="update-form" id="update-form">
+            <input type="text" id="app-name" placeholder="Nome da Aplicação" disabled>
+            <input type="text" id="app-version" placeholder="Nova Versão">
+            <button class="botao" onclick="confirmUpdate()">OK</button>
+            <span class="close-button" onclick="closeUpdateForm()">X</span>
+        </div>
+        <a href="site2.html" target="_blank" class="botao">Abrir Segunda Página</a>
+    </div>
+    <div class="sidebar">
+        <div class="tabs" id="tabs"></div>
+    </div>
+</div>
+<footer>
+    &copy; 2024 Marco Valadares
+</footer>
+
+<div class="modal" id="replicate-modal">
+    <div class="modal-header">
+        <h2>Replicar Versões</h2>
+        <button class="close-modal" onclick="toggleReplicateModal()">X</button>
+    </div>
+    <div class="modal-body">
+        <div id="replicate-options" class="application-checkboxes"></div>
+        <div id="client-selection" class="client-checkboxes"></div>
+    </div>
+    <div class="modal-footer">
+        <button class="botao" onclick="confirmReplication()">Replicar</button>
+    </div>
+</div>
+
+<div class="mode-toggle">
+    <input type="checkbox" id="toggle-mode" onclick="toggleMode()">
+    <label for="toggle-mode"></label>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
